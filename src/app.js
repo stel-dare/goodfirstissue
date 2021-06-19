@@ -3,13 +3,13 @@ const app = express();
 const router = express.Router();
 const serverless = require('serverless-http');
 const fetch = require('node-fetch').default;
+const dotenv = require('dotenv');
+dotenv.config();
 
-const client_auth_id = "username"
-const client_auth_secret = "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"
 
 const headers = {
     "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-    "Authorization": "Basic " + Buffer.from(client_auth_id+":"+client_auth_secret).toString('base64')
+    "Authorization": "Basic " + Buffer.from(process.env.USERNAME+":"+process.env.PERSONAL_ACCESS_TOKEN).toString('base64')
 }
 
 
