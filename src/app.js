@@ -3,9 +3,14 @@ const app = express();
 const router = express.Router();
 const serverless = require('serverless-http');
 const fetch = require('node-fetch').default;
+const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 
+
+app.use(cors({
+  origin: '*'
+}));
 
 const headers = {
   "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
