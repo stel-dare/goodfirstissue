@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
   const lang = req.query.lang ? req.query.lang.toLowerCase() : "scala";
   const perc = req.query.perc || 100;
   const page = req.query.page || 1;
-  let url = `https://api.github.com/search/issues?q=label:%22good%20first%20issue%22+language:${lang}+state:open&sort=created&order=${order}&per_page=100&page=${page}`
+  let url = `https://api.github.com/search/issues?q=label:%22good%20first%20issue%22+language:${lang}+state:open&sort=created&order=${order}&per_page=10&page=${page}`
   const response = await fetch(url, { method: 'GET', headers: headers })
   const resultsJson = await response.json()
   const goodFirstIssueData = resultsJson.items
