@@ -27,7 +27,8 @@ router.get('/', async (req, res) => {
   const response = await fetch(url, { method: 'GET', headers: headers })
   const resultsJson = await response.json()
   const goodFirstIssueData = resultsJson.items
-  const languagePercentages = await Promise.all(goodFirstIssueData.map(async item => {
+
+  const languagePercentagesPromises = goodFirstIssueData.map(async item => {
     let langResponse = await fetch(item.repository_url + "/languages", { method: 'GET', headers: headers })
     let languages = await langResponse.json()
     let sum = Object.values(languages).reduce((acc, val) => acc + val, 0)
@@ -35,11 +36,28 @@ router.get('/', async (req, res) => {
     // Transform language bytes in percentages
     Object.keys(languages).forEach(key => languages[key] = (languages[key] / sum) * 100)
     return languages
-  }))
+  })
+
+  const repoDetailsPromises = goodFirstIssueData.map(async item => {
+    let repoDetailsResponse = await fetch(item.repository_url, { method: 'GET', headers: headers })
+    let details = await repoDetailsResponse.json()
+    return ({ full_name: details.full_name, description: details.description, stargazers_count: details.stargazers_count, pushed_at: details.pushed_at })
+  })
+
+  const [languagePercentages, repoDetails] = await Promise.all([
+    Promise.all(languagePercentagesPromises),
+    Promise.all(repoDetailsPromises)
+  ])
 
   // Add languages and their percentages to data from github
-  const goodFirstIssueDataWithLang = goodFirstIssueData.map((repo, index) => {
+  let goodFirstIssueDataWithLang = goodFirstIssueData.map((repo, index) => {
     repo["languages"] = languagePercentages[index]
+    return repo
+  })
+
+  // Add repo details to data from github
+  goodFirstIssueDataWithLang = goodFirstIssueDataWithLang.map((repo, index) => {
+    repo["repo_details"] = repoDetails[index]
     return repo
   })
 
