@@ -1,4 +1,4 @@
-# **MyGoodFirstIssue**
+# **MyGoodFirstIssue (Backend)**
 
 [MyGoodFirstIssue](https://www.mygoodfirstissue.com/) is a web app that helps developers find GitHub repositories with a codebase and issues that match their skill level and interests. With MyGoodFirstIssue, you can search for repositories by language and technology, and filter your results by the percentage of the repository that uses that language or technology. This makes it easy to find repositories that are a good fit for you, so you can make your first contribution to open source with confidence.
 
@@ -11,4 +11,4 @@
 
 ## **Contribute to open source with confidence**
 
-[MyGoodFirstIssue makes](https://www.mygoodfirstissue.com/) it easy to find repositories that are a good fit for your skills and interests, so you can make your first contribution to open source with confidence. By providing you with detailed information about each repository, MyGoodFirstIssue helps you find projects that are well-suited to your abilities, and empowers you to make meaningful contributions to open source. Try MyGoodFirstIssue today and start contributing to open source like a pro.
+[MyGoodFirstIssue] makes (https://www.mygoodfirstissue.com/) it easy to find repositories that are a good fit for your skills and interests, so you can make your first contribution to open source with confidence. By providing you with detailed information about each repository, MyGoodFirstIssue helps you find projects that are well-suited to your abilities, and empowers you to make meaningful contributions to open source. Try MyGoodFirstIssue today and start contributing to open source like a pro.
